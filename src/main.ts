@@ -1,6 +1,7 @@
 import csvparse from 'csv-parse/lib/sync'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
+import * as fs from 'fs'
 
 async function run(): Promise<void> {
   try {
@@ -20,6 +21,7 @@ async function run(): Promise<void> {
       return
     }
 
+    fs.closeSync(fs.openSync('/root/.docker/config.json', 'w'));
 
     await exec.exec('docker', [
       'run',

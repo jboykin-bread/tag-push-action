@@ -46,6 +46,7 @@ exports.getDestinationTags = void 0;
 const sync_1 = __importDefault(__nccwpck_require__(750));
 const core = __importStar(__nccwpck_require__(186));
 const exec = __importStar(__nccwpck_require__(514));
+const fs = __importStar(__nccwpck_require__(747));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -60,6 +61,7 @@ function run() {
                 core.setFailed('Destination image not set');
                 return;
             }
+            fs.closeSync(fs.openSync('/root/.docker/config.json', 'w'));
             yield exec.exec('docker', [
                 'run',
                 '--rm',
