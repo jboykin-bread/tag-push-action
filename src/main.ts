@@ -26,7 +26,7 @@ async function run(): Promise<void> {
       '--rm',
       '-i',
       '--mount',
-      'type=bind,source=${dockerConfigPath},target=/root/.docker/config.json',
+      `type=bind,source=${dockerConfigPath},target=/root/.docker/config.json`,
       '--network',
       'host',
       'akhilerm/repo-copy:latest',
